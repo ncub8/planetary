@@ -1,31 +1,43 @@
 export interface Planet {
   id: string;
   name: string;
+  symbol: string;
+  color: string;
   description: string;
-  image?: string;
-  distanceFromSun: number;
-  diameter: number;
-  mass: number;
-  moons: number;
+  element: string;
+  qualities: string[];
 }
 
-export interface Mission {
-  id: string;
-  name: string;
-  description: string;
-  launchDate: Date;
-  status: 'planned' | 'active' | 'completed' | 'failed';
-  agency: string;
-  target?: string;
+export interface PlanetaryHour {
+  planet: Planet;
+  startTime: Date;
+  endTime: Date;
+  hourNumber: number;
+  isDayHour: boolean;
 }
 
-export interface Astronomer {
-  id: string;
-  name: string;
-  bio: string;
-  discoveries: string[];
-  birthYear: number;
-  deathYear?: number;
+export interface Location {
+  latitude: number;
+  longitude: number;
+  city: string;
+  timezone: string;
+}
+
+export interface SunCalculation {
+  sunrise: Date;
+  sunset: Date;
+  dayLength: number;
+  nightLength: number;
+}
+
+export interface PlanetaryHoursCalculation {
+  date: Date;
+  location: Location;
+  sunData: SunCalculation;
+  dayHours: PlanetaryHour[];
+  nightHours: PlanetaryHour[];
+  currentHour?: PlanetaryHour;
+  rulingPlanet: Planet;
 }
 
 export interface CardProps {
@@ -34,4 +46,12 @@ export interface CardProps {
   icon: string;
   className?: string;
   onClick?: () => void;
+}
+
+export interface FormData {
+  latitude: number;
+  longitude: number;
+  city: string;
+  date: string;
+  time: string;
 }
