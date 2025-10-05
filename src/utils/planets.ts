@@ -1,6 +1,7 @@
 import { Planet } from '../types';
 
-// Chaldean order of planets (7 classical planets)
+// Traditional Chaldean planetary hour sequence (by speed/orbital period)
+// This is the correct order for planetary hours: Saturn, Sun, Venus, Jupiter, Mercury, Mars, Moon
 export const CHALDEAN_PLANETS: Planet[] = [
   {
     id: 'saturn',
@@ -10,24 +11,6 @@ export const CHALDEAN_PLANETS: Planet[] = [
     description: 'Discipline, structure, limitations, and wisdom',
     element: 'Earth',
     qualities: ['discipline', 'restriction', 'patience', 'wisdom', 'melancholy']
-  },
-  {
-    id: 'jupiter',
-    name: 'Jupiter',
-    symbol: '♃',
-    color: '#3182CE',
-    description: 'Expansion, growth, luck, and abundance',
-    element: 'Fire',
-    qualities: ['expansion', 'luck', 'wisdom', 'abundance', 'optimism']
-  },
-  {
-    id: 'mars',
-    name: 'Mars',
-    symbol: '♂',
-    color: '#E53E3E',
-    description: 'Action, energy, conflict, and courage',
-    element: 'Fire',
-    qualities: ['action', 'courage', 'conflict', 'energy', 'passion']
   },
   {
     id: 'sun',
@@ -48,6 +31,15 @@ export const CHALDEAN_PLANETS: Planet[] = [
     qualities: ['love', 'beauty', 'harmony', 'pleasure', 'relationships']
   },
   {
+    id: 'jupiter',
+    name: 'Jupiter',
+    symbol: '♃',
+    color: '#3182CE',
+    description: 'Expansion, growth, luck, and abundance',
+    element: 'Fire',
+    qualities: ['expansion', 'luck', 'wisdom', 'abundance', 'optimism']
+  },
+  {
     id: 'mercury',
     name: 'Mercury',
     symbol: '☿',
@@ -55,6 +47,15 @@ export const CHALDEAN_PLANETS: Planet[] = [
     description: 'Communication, intellect, and travel',
     element: 'Air',
     qualities: ['communication', 'intellect', 'travel', 'commerce', 'versatility']
+  },
+  {
+    id: 'mars',
+    name: 'Mars',
+    symbol: '♂',
+    color: '#E53E3E',
+    description: 'Action, energy, conflict, and courage',
+    element: 'Fire',
+    qualities: ['action', 'courage', 'conflict', 'energy', 'passion']
   },
   {
     id: 'moon',
@@ -67,28 +68,18 @@ export const CHALDEAN_PLANETS: Planet[] = [
   }
 ];
 
-// Day of week to ruling planet mapping
-export const DAY_RULERS: { [key: number]: Planet } = {
-  0: CHALDEAN_PLANETS[6], // Sunday - Sun (index 3 in Chaldean order, but we start with Moon at 6)
-  1: CHALDEAN_PLANETS[6], // Monday - Moon
-  2: CHALDEAN_PLANETS[2], // Tuesday - Mars
-  3: CHALDEAN_PLANETS[5], // Wednesday - Mercury
-  4: CHALDEAN_PLANETS[1], // Thursday - Jupiter
-  5: CHALDEAN_PLANETS[4], // Friday - Venus
-  6: CHALDEAN_PLANETS[0], // Saturday - Saturn
-};
-
-// Get the correct day ruler
+// Get the correct day ruler based on traditional astrology
 export const getDayRuler = (date: Date): Planet => {
   const dayOfWeek = date.getDay();
+  // Sunday=0, Monday=1, Tuesday=2, Wednesday=3, Thursday=4, Friday=5, Saturday=6
   const rulers = [
-    CHALDEAN_PLANETS[3], // Sunday - Sun
-    CHALDEAN_PLANETS[6], // Monday - Moon
-    CHALDEAN_PLANETS[2], // Tuesday - Mars
-    CHALDEAN_PLANETS[5], // Wednesday - Mercury
-    CHALDEAN_PLANETS[1], // Thursday - Jupiter
-    CHALDEAN_PLANETS[4], // Friday - Venus
-    CHALDEAN_PLANETS[0], // Saturday - Saturn
+    CHALDEAN_PLANETS[1], // Sunday - Sun (index 1 in our corrected array)
+    CHALDEAN_PLANETS[6], // Monday - Moon (index 6)
+    CHALDEAN_PLANETS[5], // Tuesday - Mars (index 5)
+    CHALDEAN_PLANETS[4], // Wednesday - Mercury (index 4)
+    CHALDEAN_PLANETS[3], // Thursday - Jupiter (index 3)
+    CHALDEAN_PLANETS[2], // Friday - Venus (index 2)
+    CHALDEAN_PLANETS[0], // Saturday - Saturn (index 0)
   ];
   return rulers[dayOfWeek];
 };
