@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Planetary Hours",
+  "name": "Planetary Hours Calculator - Chaldean Astrology",
+  "description": "Calculate traditional planetary hours based on Chaldean astrology for magical timing and astrological practice",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,18 +9,29 @@
       "type": "image/x-icon"
     },
     {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#6366f1",
+  "background_color": "#1e1b4b",
+  "categories": ["education", "lifestyle", "utilities"],
+  "lang": "en",
+  "scope": "/"
 }
